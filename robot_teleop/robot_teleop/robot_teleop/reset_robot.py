@@ -3,6 +3,7 @@ import time
 from rclpy.node import Node
 
 from gazebo_msgs.srv import DeleteEntity, SpawnEntity
+from robot_teleop_interfaces.srv import ResetRobot
 #Import Reset Robot Service Type
 
 class ResetRobotService(Node):
@@ -11,6 +12,7 @@ class ResetRobotService(Node):
         super().__init__('reset_robot_service')
 
         #Create Reset Robot Service
+        self.srv = self.create_service(ResetRobot, '/reset_robot', self.clbk_reset_robot)
 
         self.srv_del_entity = self.create_client(DeleteEntity, '/delete_entity')
         self.srv_spawn_entity = self.create_client(SpawnEntity, '/spawn_entity')
@@ -20,6 +22,17 @@ class ResetRobotService(Node):
             self.get_logger().info("waiting for gazebo spawn service")
 
     #Callback Function for robot reset service
+    def clbk_reset_robot(self, request, response):
+        self.delete_robot(request.robot_name)
+        self.spawn_robot(
+            name=request.robot_name,
+            robot_description=request.robot_description,
+            initial_pose=request.reset_pose
+        )
+
+        response.success = True
+
+        return response
     
     def delete_robot(self, robot_name):
         self.get_logger().info("Deleting robot")
@@ -40,7 +53,7 @@ class ResetRobotService(Node):
         spawn_req.initial_pose = initial_pose
         
         self.future = self.srv_spawn_entity.call_async(spawn_req)
-        time.sleep(1)
+        time.sleep(1.0)
 
 def main(args=None):
     rclpy.init(args=args)

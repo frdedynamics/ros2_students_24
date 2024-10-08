@@ -25,7 +25,8 @@ setup(
         'console_scripts': [
             'keyboard_control = robot_teleop.keyboard_control:main',
             'robot_teleop = robot_teleop.robot_teleop:main',
-            'reset_robot = robot_teleop.reset_robot:main'
+            'reset_robot = robot_teleop.reset_robot:main',
+            'replay_velocities = robot_teleop.replay_velocities:main'
         ],
     },
 )

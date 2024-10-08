@@ -3,6 +3,7 @@ import rclpy
 from rclpy.node import Node
 
 from geometry_msgs.msg import Twist
+from robot_teleop_interfaces.msg import Teleop
 #import teleop msg type
 
 class KeyboardNode(Node):
@@ -10,13 +11,14 @@ class KeyboardNode(Node):
         super().__init__('keyboard_node')
 
         #create teleop publisher
+        self.publisher = self.create_publisher(Teleop, '/teleop_device', 10)
 
         self.key_w = False
         self.key_a = False
         self.key_s = False
         self.key_d = False
         self.vel_msg = Twist()
-        self.btns = [False, False, False]
+        self.btns = [False, False, False, False]
 
         self.max_linear_vel = 0.5
         self.max_angular_vel = 1.0
@@ -43,6 +45,8 @@ class KeyboardNode(Node):
             self.btns[1] = True
         if key == keyboard.KeyCode.from_char('l'):
             self.btns[2] = True
+        if key == keyboard.KeyCode.from_char('c'):
+            self.btns[3] = True
 
     def _on_release(self, key):
         if key == keyboard.KeyCode.from_char('w'):
@@ -63,6 +67,8 @@ class KeyboardNode(Node):
             self.btns[1] = False
         if key == keyboard.KeyCode.from_char('l'):
             self.btns[2] = False
+        if key == keyboard.KeyCode.from_char('c'):
+            self.btns[3] = False
 
     def timer_callback(self):
         # if a is pressed turn left; if d is pressed turn right; if both a and d are pressed don't turn
@@ -79,8 +85,12 @@ class KeyboardNode(Node):
             self.vel_msg.linear.x -= self.linear_vel_step
 
         #Create teleop msg
+        msg = Teleop()
+        msg.velocity = self.vel_msg
+        msg.buttons = self.btns
 
         #Publish teleop msg
+        self.publisher.publish(msg)
         
 
 def main(args=None):

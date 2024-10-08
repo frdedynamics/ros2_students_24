@@ -31,9 +31,39 @@ def generate_launch_description():
         },
     ).toxml()
 
-
+    keyboard_node = launch_ros.actions.Node(
+            package='robot_teleop',
+            executable='keyboard_control',
+            namespace='',
+            name='keyboard_control',)
+    
+    robot_teleop_node = launch_ros.actions.Node(
+            package='robot_teleop',
+            executable='robot_teleop',
+            namespace='',
+            name='robot_teleop',
+            parameters=[
+                {'tb3_0_description': tb3_0_robot_description,
+                 'tb3_1_description': tb3_1_robot_description}
+            ])
+    
+    reset_robot_node = launch_ros.actions.Node(
+            package='robot_teleop',
+            executable='reset_robot',
+            namespace='',
+            name='reset_robot',)
+    
+    replay_velocities_node = launch_ros.actions.Node(
+        package='robot_teleop',
+        executable='replay_velocities',
+        namespace='',
+        name='replay_velocities',
+    )
    
 
     return launch.LaunchDescription([
-        
+        keyboard_node,
+        robot_teleop_node,
+        reset_robot_node,
+        replay_velocities_node
     ])
