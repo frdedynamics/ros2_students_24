@@ -1,4 +1,5 @@
 import os
+import launch_ros
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
@@ -16,7 +17,7 @@ def generate_launch_description():
     
     # Define location of the xacro file that describes the robot model
     # xacro_file_path = os.path.join(get_package_share_directory(package_name), 'urdf', 'mobile_manipulator.urdf.xacro')
-    xacro_file_path = "/home/hvlrobotics/dat160_ws/src/custom_robot_sim/urdf/mobile_manipulator.urdf.xacro"
+    xacro_file_path = "/home/rocotics/ros2_ws/src/custom_robot_sim/urdf/robot_description.urdf.xacro"
 
     #Robot starting position and orientation
     robot_pos = ['0.0', '0.0', '0.0']
@@ -57,8 +58,18 @@ def generate_launch_description():
         output='screen'
     )
 
+    reset_robot_node = launch_ros.actions.Node(
+            package='custom_robot_sim',
+            executable='reload_robot_model',
+            namespace='',
+            name='reload_robot_model',
+            parameters=[
+                {'xacro_file_path': xacro_file_path}
+            ])
+
     return LaunchDescription([
         sim_time_arg,
         node_robot_state_publisher,
-        spawn_entity
+        spawn_entity,
+        reset_robot_node
     ])
