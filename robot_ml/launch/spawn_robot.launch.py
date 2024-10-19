@@ -13,9 +13,14 @@ def generate_launch_description():
     # Get the path to the Gazebo world file
     package_name = 'robot_ml'  # Replace with your package name
     world_file_path = os.path.join(get_package_share_directory(package_name), 'worlds', 'ml_exercise.world')
+    # Get the path to model folder
+    model_path = os.path.join(get_package_share_directory(package_name), 'models')
     # Get the path to the Xacro file
     package_name_robot = 'braitenberg_vehicle'
     xacro_file_path = os.path.join(get_package_share_directory(package_name_robot), 'urdf', 'turtlebot3_waffle_pi.urdf.xacro')
+
+    os.environ['GAZEBO_MODEL_PATH'] = model_path
+    print("Model path: ", model_path)
 
     tb3_pos = ['0.0', '0.0', '0.0']
     tb3_yaw = '1.57079632679'

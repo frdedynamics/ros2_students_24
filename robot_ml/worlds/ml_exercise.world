@@ -25,8 +25,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>cats/1</name>
           </script>
         </material>
@@ -45,8 +45,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>cats/2</name>
           </script>
         </material>
@@ -65,8 +65,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>dogs/1</name>
           </script>
         </material>
@@ -85,8 +85,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>dogs/2</name>
           </script>
         </material>
@@ -105,8 +105,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>cats/1</name>
           </script>
         </material>
@@ -125,8 +125,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>cats/2</name>
           </script>
         </material>
@@ -145,8 +145,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>dogs/1</name>
           </script>
         </material>
@@ -165,8 +165,8 @@
         </geometry>
         <material>
           <script> 
-            <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/scripts</uri>
-	    <uri>/home/rocotics/ros2_ws/src/robot_ml/models/painting/materials/textures</uri>
+            <uri>model://painting/materials/scripts</uri>
+	    <uri>model://painting/materials/textures</uri>
             <name>dogs/2</name>
           </script>
         </material>
