@@ -20,7 +20,6 @@ def generate_launch_description():
     xacro_file_path = os.path.join(get_package_share_directory(package_name_robot), 'urdf', 'turtlebot3_waffle_pi.urdf.xacro')
 
     os.environ['GAZEBO_MODEL_PATH'] = model_path
-    print("Model path: ", model_path)
 
     tb3_pos = ['0.0', '0.0', '0.0']
     tb3_yaw = '1.57079632679'
